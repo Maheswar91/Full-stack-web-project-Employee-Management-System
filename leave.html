@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leave Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80h') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    form input,
+    form select,
+    form button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    form input, form select {
+      background: rgba(255, 255, 255, 0.95);
+      color: #222;
+    }
+
+    form label {
+      grid-column: span 1;
+      font-weight: 600;
+      font-size: 14px;
+      align-self: center;
+    }
+
+    form button {
+      background-color: #6c5ce7;
+      color: white;
+      font-weight: bold;
+      grid-column: span 2;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #4b3dc4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      color: #222;
+    }
+
+    thead {
+      background-color: #6c5ce7;
+      color: white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      form button {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Leave Request</h2>
+
+    <form id="leaveForm">
+      <input type="text" id="empId" placeholder="Employee ID" required>
+      <label for="fromDate">From:</label>
+      <input type="date" id="fromDate" required>
+      <label for="toDate">To:</label>
+      <input type="date" id="toDate" required>
+      <select id="leaveType" required>
+        <option value="">Select Leave Type</option>
+        <option value="Sick">Sick Leave</option>
+        <option value="Casual">Casual Leave</option>
+        <option value="Earned">Earned Leave</option>
+      </select>
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <h3>Leave History</h3>
+    <table id="leaveTable">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="js/leave.js"></script>
+</body>
+</html>

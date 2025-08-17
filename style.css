@@ -1,0 +1,161 @@
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body Styling === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+/* === Container === */
+.container {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* === Headings === */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #444;
+}
+
+/* === Forms === */
+form {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #3498db;
+  background: #fff;
+  outline: none;
+}
+
+/* === Buttons === */
+button {
+  padding: 12px;
+  background: #3498db;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #2c80b4;
+}
+
+/* === Table Styling === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+  overflow-x: auto;
+}
+
+thead {
+  background-color: #3498db;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+/* === Fade Animation === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td {
+    padding-left: 50%;
+    position: relative;
+    text-align: right;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+}

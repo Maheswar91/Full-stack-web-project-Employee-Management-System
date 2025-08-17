@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - EMS</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #74b9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: #0984e3;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0776cb;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" id="regUsername" placeholder="Username" required />
+      <input type="password" id="regPassword" placeholder="Password" required />
+      <input type="email" id="regEmail" placeholder="Email" required />
+      <select id="regRole" required>
+        <option value="">Select Role</option>
+        <option value="admin">Admin</option>
+        <option value="hr">HR</option>
+        <option value="employee">Employee</option>
+      </select>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('regUsername').value;
+      const password = document.getElementById('regPassword').value;
+      const email = document.getElementById('regEmail').value;
+      const role = document.getElementById('regRole').value;
+
+      if (!username || !password || !email || !role) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+      if (users.find(user => user.username === username)) {
+        alert('Username already exists!');
+        return;
+      }
+
+      users.push({ username, password, email, role });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert('User registered successfully!');
+      window.location.href = 'index.html'; // Redirect to login page
+    });
+  </script>
+</body>
+</html>

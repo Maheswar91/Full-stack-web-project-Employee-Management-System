@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+      max-width: 600px;
+      width: 100%;
+      color: #fff;
+      animation: fadeIn 0.7s ease;
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      padding: 12px 15px;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #00cec9;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00b2ad;
+    }
+
+    table {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #00cec9;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+
+      input, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📅 Attendance Tracker</h2>
+
+    <form id="attendanceForm">
+      <input type="text" id="empId" placeholder="👤 Employee ID" required>
+      <input type="datetime-local" id="timestamp" required>
+      <button type="submit">✅ Mark Attendance</button>
+    </form>
+
+    <h3>📋 Attendance Records</h3>
+    <table id="attendanceTable">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="js/attendance.js"></script>
+</body>
+</html>
